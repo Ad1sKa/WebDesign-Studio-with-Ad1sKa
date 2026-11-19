@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebDesign Studio | Сайты и лендинги от Ad1sKa</title>
+<meta name="description" content="Создаём продающие сайты и лендинги с вау-эффектом под ключ.">
+<style>
+:root{
+  --bg:#05070d;
+  --bg2:#0a0e1a;
+  --ink:#eef1ff;
+  --dim:#8b93b0;
+  --violet:#8a7bff;
+  --cyan:#54e6ff;
+  --glass:rgba(255,255,255,.045);
+  --stroke:rgba(255,255,255,.1);
+  --rad:20px;
+  --font:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --mono:"Cascadia Code",Consolas,ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--font);
+  line-height:1.6;overflow-x:hidden;
+  background-image:radial-gradient(1200px 700px at 80% -10%,rgba(138,123,255,.08),transparent 60%),
+                   radial-gradient(900px 600px at 10% 110%,rgba(84,230,255,.05),transparent 60%);
+}
+::selection{background:rgba(138,123,255,.4)}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+
+/* ---------- nav ---------- */
+nav{
+  position:fixed;inset:0 0 auto;z-index:50;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:rgba(5,7,13,.45);border-bottom:1px solid rgba(255,255,255,.06);
+}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.04em}
+.logo-gem{
+  width:22px;height:22px;flex:none;
+  background:conic-gradient(from 210deg,var(--violet),var(--cyan),var(--violet));
+  clip-path:polygon(50% 0,100% 28%,100% 72%,50% 100%,0 72%,0 28%);
+  animation:gemspin 9s linear infinite;
+}
+@keyframes gemspin{to{filter:hue-rotate(360deg)}}
+.logo small{color:var(--dim);font-weight:400}
+.nav-cta{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:9px 18px;border:1px solid var(--stroke);border-radius:99px;
+  transition:border-color .3s,background .3s;cursor:pointer;background:none;color:var(--ink);
+}
+.nav-cta:hover{border-color:var(--cyan);background:rgba(84,230,255,.07)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(5,7,13,.25),transparent 30%,transparent 65%,var(--bg));
+}
+.hero-inner{position:relative;z-index:2;width:100%;padding:140px 0 120px;pointer-events:none}
+.hero-inner a,.hero-inner button{pointer-events:auto}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:28px;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cyan);
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--cyan))}
+h1{
+  font-size:clamp(2.6rem,7.2vw,5.4rem);line-height:1.02;font-weight:800;
+  letter-spacing:-.025em;max-width:13ch;text-wrap:balance;
+}
+h1 .grad{
+  background:linear-gradient(100deg,var(--violet) 10%,var(--cyan) 70%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.offer{
+  margin:26px 0 44px;max-width:46ch;font-size:clamp(1rem,1.6vw,1.22rem);
+  color:var(--dim);font-weight:300;
+}
+.offer b{color:var(--ink);font-weight:600}
+.btn{
+  display:inline-flex;align-items:center;gap:14px;cursor:pointer;border:none;
+  font:600 1rem var(--font);letter-spacing:.02em;color:#04060c;
+  padding:17px 34px;border-radius:99px;position:relative;isolation:isolate;
+  background:linear-gradient(100deg,var(--violet),var(--cyan));
+  box-shadow:0 0 0 1px rgba(255,255,255,.12) inset,0 12px 40px -8px rgba(110,160,255,.45);
+  transition:transform .3s cubic-bezier(.2,.9,.3,1.4),box-shadow .3s;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(255,255,255,.2) inset,0 20px 56px -8px rgba(110,160,255,.6)}
+.btn:active{transform:translateY(-1px) scale(.98)}
+.btn svg{transition:transform .3s}
+.btn:hover svg{transform:translateX(4px)}
+.hero-meta{display:flex;gap:34px;margin-top:58px;flex-wrap:wrap}
+.hero-meta span{color:var(--ink);font-weight:600;margin-right:6px}
+.hint{
+  position:absolute;right:40px;bottom:36px;z-index:2;display:flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+}
+.hint i{width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:ping 2s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(84,230,255,.5)}80%,100%{box-shadow:0 0 0 12px rgba(84,230,255,0)}}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.on{opacity:1;transform:none}
+.rv:nth-child(2){transition-delay:.12s}.rv:nth-child(3){transition-delay:.24s}
+
+/* ---------- services ---------- */
+.services{padding:130px 0 150px;position:relative}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:64px;flex-wrap:wrap}
+h2{font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1.08;max-width:18ch}
+.sec-head p{max-width:34ch;color:var(--dim);font-weight:300}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  position:relative;padding:38px 32px 42px;border-radius:var(--rad);
+  background:var(--glass);border:1px solid var(--stroke);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  overflow:hidden;transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .45s,background .45s;
+}
+.card::before{
+  content:"";position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .5s;
+  background:radial-gradient(420px 260px at var(--mx,50%) var(--my,0%),rgba(138,123,255,.14),transparent 70%);
+}
+.card:hover{transform:translateY(-8px);border-color:rgba(138,123,255,.35);background:rgba(255,255,255,.06)}
+.card:hover::before{opacity:1}
+.card-icon{
+  width:52px;height:52px;border-radius:14px;display:grid;place-items:center;margin-bottom:26px;
+  background:linear-gradient(135deg,rgba(138,123,255,.18),rgba(84,230,255,.1));
+  border:1px solid rgba(138,123,255,.3);color:var(--cyan);
+}
+.card h3{font-size:1.28rem;font-weight:700;letter-spacing:-.01em;margin-bottom:12px}
+.card p{color:var(--dim);font-size:.94rem;font-weight:300}
+.card .tag{
+  position:absolute;top:30px;right:28px;font-family:var(--mono);font-size:.62rem;
+  letter-spacing:.18em;color:rgba(139,147,176,.6);text-transform:uppercase;
+}
+.card ul{list-style:none;margin-top:22px;display:grid;gap:9px}
+.card li{display:flex;gap:10px;font-size:.88rem;color:#b9c0d8}
+.card li::before{content:"";width:14px;height:1px;background:var(--cyan);margin-top:.72em;flex:none;opacity:.7}
+
+/* ---------- portfolio & pricing ---------- */
+.portfolio,.pricing{padding:0 0 150px;position:relative}
+.portfolio .sec-head,.pricing .sec-head{margin-bottom:44px}
+.project-card{display:flex;flex-direction:column;min-height:100%}
+.project-card .card-icon{margin-bottom:22px}
+.project-card .card-actions{margin-top:auto;padding-top:28px}
+.card-link{display:inline-flex;align-items:center;gap:9px;color:var(--cyan);font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;transition:gap .3s,color .3s}
+.card-link:hover{gap:13px;color:var(--ink)}
+.card-link svg{transition:transform .3s}.card-link:hover svg{transform:translate(2px,-2px)}
+.pricing{padding-bottom:130px}
+.price-card{padding:32px 28px 30px;display:flex;flex-direction:column}
+.price-card.popular{border-color:rgba(84,230,255,.38);background:rgba(84,230,255,.06)}
+.price-card .tag{color:var(--cyan)}
+.price-card h3{padding-right:42px;min-height:2.7em}
+.price{font-size:1.65rem;font-weight:800;letter-spacing:-.03em;margin:20px 0 3px}
+.price-note{color:var(--dim);font-size:.84rem}
+.price-card .card-actions{margin-top:auto;padding-top:26px}
+.price-card .btn{width:100%;justify-content:center;padding:13px 18px;font-size:.88rem}
+.form-status{min-height:1.4em;margin-top:14px;color:#ffb4b4;font-size:.82rem;text-align:center}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid rgba(255,255,255,.06);background:linear-gradient(to bottom,transparent,rgba(138,123,255,.04))}
+.foot-cta{padding:120px 0 90px;text-align:center}
+.foot-cta h2{margin:0 auto 18px}
+.foot-cta p{color:var(--dim);max-width:44ch;margin:0 auto 42px;font-weight:300}
+.foot-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding:26px 0 34px;border-top:1px solid rgba(255,255,255,.06);
+}
+.foot-bar .mono a{transition:color .3s}
+.foot-bar .mono a:hover{color:var(--cyan)}
+
+/* ---------- modal ---------- */
+.modal{
+  position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:24px;
+  background:rgba(4,6,12,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;
+}
+.modal.open{opacity:1;visibility:visible}
+.modal-box{
+  width:min(460px,100%);padding:44px 40px;border-radius:24px;position:relative;
+  background:linear-gradient(160deg,rgba(26,30,48,.92),rgba(10,13,24,.92));
+  border:1px solid rgba(138,123,255,.25);
+  box-shadow:0 40px 90px -20px rgba(0,0,0,.7),0 0 70px -30px rgba(138,123,255,.5);
+  transform:translateY(24px) scale(.97);transition:transform .4s cubic-bezier(.2,.8,.2,1.1);
+}
+.modal.open .modal-box{transform:none}
+.modal-x{
+  position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;cursor:pointer;
+  border:1px solid var(--stroke);background:none;color:var(--dim);font-size:1rem;line-height:1;
+  transition:color .3s,border-color .3s;
+}
+.modal-x:hover{color:var(--ink);border-color:var(--cyan)}
+.modal h3{font-size:1.5rem;font-weight:800;letter-spacing:-.015em;margin:10px 0 6px}
+.modal .sub{color:var(--dim);font-size:.9rem;font-weight:300;margin-bottom:28px}
+.field{margin-bottom:16px}
+.field label{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.field input,.field textarea{
+  width:100%;padding:13px 16px;border-radius:12px;color:var(--ink);
+  background:rgba(255,255,255,.05);border:1px solid var(--stroke);
+  font:300 .95rem var(--font);transition:border-color .3s,background .3s;resize:none;
+}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--violet);background:rgba(138,123,255,.07)}
+.modal .btn{width:100%;justify-content:center;margin-top:10px}
+.sent{display:none;text-align:center;padding:30px 0 14px}
+.sent-ring{
+  width:64px;height:64px;margin:0 auto 22px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgba(84,230,255,.5);color:var(--cyan);font-size:1.6rem;
+  animation:ping 1.6s ease-out 2;
+}
+.modal.done form{display:none}.modal.done .sent{display:block}
+
+@media(max-width:900px){.grid{grid-template-columns:1fr}.hint{display:none}}
+@media(max-width:600px){
+  .wrap{padding:0 20px}.hero-inner{padding:120px 0 90px}
+  .hero-meta{gap:18px;font-size:.85rem}.services{padding:90px 0}
+  .foot-cta{padding:80px 0 60px}.modal-box{padding:36px 26px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="WebDesign Studio">
+      <span class="logo-gem" aria-hidden="true"></span>
+      WebDesign&nbsp;Studio&nbsp;<small>/ Ad1sKa</small>
+    </a>
+    <button class="nav-cta" data-open>Обсудить проект</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="wrap hero-inner">
+    <p class="eyebrow">digital design &amp; development</p>
+    <h1>Сайты, которые <span class="grad">продают</span> за вас</h1>
+    <p class="offer">Создаём <b>продающие сайты и лендинги с вау-эффектом</b> под ключ — от смысла и дизайна до запуска и первых заявок.</p>
+    <button class="btn" data-open>
+      Заказать сайт
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <div class="hero-meta mono">
+      <div><span>7 дней</span>до запуска</div>
+      <div><span>100%</span>уникальный дизайн</div>
+      <div><span>×2.4</span>рост конверсии</div>
+    </div>
+  </div>
+  <div class="hint"><i></i>двигайте мышью · клик — импульс</div>
+</header>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="rv">Что мы делаем лучше всех</h2>
+      <p class="rv">Никаких шаблонов и конструкторов — каждый пиксель написан руками под вашу задачу.</p>
+    </div>
+    <div class="grid">
+      <article class="card rv">
+        <span class="tag">/ 01</span>
+        <div class="card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+        </div>
+        <h3>Лендинги под ключ</h3>
+        <p>Одностраничники, которые превращают трафик в заявки: смысловая структура, оффер, захват лида.</p>
+        <ul>
+          <li>Прототип и продающий текст</li>
+          <li>Формы, квизы, аналитика</li>
+          <li>Запуск за 7–10 дней</li>
+        </ul>
+      </article>
+      <article class="card rv">
+        <span class="tag">/ 02</span>
+        <div class="card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg>
+        </div>
+        <h3>Уникальный дизайн и анимации</h3>
+        <p>Генеративная 3D-графика, WebGL-эффекты и микроанимации — как сцена на этом экране, только под ваш бренд.</p>
+        <ul>
+          <li>Авторская айдентика страницы</li>
+          <li>3D и canvas-сцены без библиотек</li>
+          <li>Вау-эффект, который помнят</li>
+        </ul>
+      </article>
+      <article class="card rv">
+        <span class="tag">/ 03</span>
+        <div class="card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg>
+        </div>
+        <h3>Адаптив и быстрый запуск</h3>
+        <p>Идеально на любом экране и 95+ в PageSpeed. Домен, хостинг, SSL и метрики — всё настроим сами.</p>
+        <ul>
+          <li>Mobile-first вёрстка</li>
+          <li>Скорость загрузки &lt; 1 сек</li>
+          <li>Передаём готовым к рекламе</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="rv">Примеры работ</h2>
+      <p class="rv">Проекты, в которых дизайн, интерактив и атмосфера работают на впечатление и результат.</p>
+    </div>
+    <div class="grid">
+      <article class="card project-card rv">
+        <span class="tag">/ 01</span>
+        <div class="card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 19h16M6 17V9h12v8M8 9V5h8v4M9 13h6"/></svg>
+        </div>
+        <h3>Roast &amp; Co.</h3>
+        <p>Премиальная кофейня с атмосферным визуальным стилем, плавными анимациями и вниманием к каждой детали.</p>
+        <div class="card-actions"><a class="card-link" href="https://primer1-63eh.vercel.app" target="_blank" rel="noopener">Открыть проект <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </article>
+      <article class="card project-card rv">
+        <span class="tag">/ 02</span>
+        <div class="card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8 4-4 4 4M8 16l4 4 4-4M4 12h16M12 4v16"/></svg>
+        </div>
+        <h3>Neon Strike</h3>
+        <p>Киберспортивный клуб с современным интерфейсом и переключением вкладок без перезагрузки страницы.</p>
+        <div class="card-actions"><a class="card-link" href="https://primer1-76b5.vercel.app" target="_blank" rel="noopener">Открыть проект <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </article>
+      <article class="card project-card rv">
+        <span class="tag">/ 03</span>
+        <div class="card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v16H6zM9 8h6M9 12h6M9 16h3"/></svg>
+        </div>
+        <h3>IRON PULSE</h3>
+        <p>Тёмный премиум-дизайн, интерактивный калькулятор калорий и удобный переключатель тарифов.</p>
+        <div class="card-actions"><a class="card-link" href="https://primer3-lime.vercel.app/" target="_blank" rel="noopener">Открыть проект <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="rv">Тарифы и формат работы</h2>
+      <p class="rv">Выберите подходящий формат — обсудим задачу и зафиксируем точную смету до старта.</p>
+    </div>
+    <div class="grid">
+      <article class="card price-card rv">
+        <span class="tag">/ 01</span>
+        <h3>Лендинг-визитка</h3>
+        <div class="price">от 100 BYN</div>
+        <p class="price-note">Срок: 3–5 дней</p>
+        <div class="card-actions"><button class="btn" type="button" data-open data-plan="Лендинг-визитка">Обсудить тариф</button></div>
+      </article>
+      <article class="card price-card popular rv">
+        <span class="tag">популярный · / 02</span>
+        <h3>Продающий лендинг с интерактивом</h3>
+        <div class="price">от 200 BYN</div>
+        <p class="price-note">Срок: 5–7 дней</p>
+        <div class="card-actions"><button class="btn" type="button" data-open data-plan="Продающий лендинг с интерактивом">Обсудить тариф</button></div>
+      </article>
+      <article class="card price-card rv">
+        <span class="tag">/ 03</span>
+        <h3>Индивидуальный проект с 3D/Canvas</h3>
+        <div class="price">от 300 BYN</div>
+        <p class="price-note">Срок: обсуждается индивидуально</p>
+        <div class="card-actions"><button class="btn" type="button" data-open data-plan="Индивидуальный проект с 3D/Canvas">Обсудить тариф</button></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-cta">
+      <p class="eyebrow" style="justify-content:center;display:flex">следующий проект — ваш</p>
+      <h2>Готовы к сайту,<br>который работает?</h2>
+      <p>Опишите задачу в двух словах — вернёмся с идеей и точной сметой в течение дня.</p>
+      <button class="btn" data-open>Оставить заявку
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <div class="foot-bar">
+      <a class="logo" href="#top"><span class="logo-gem" aria-hidden="true"></span>WebDesign&nbsp;Studio&nbsp;<small>/ Ad1sKa</small></a>
+      <p class="mono"><a href="https://t.me/mtAd1sKa" target="_blank" rel="noopener">@mtAd1sKa</a></p>
+      <p class="mono">© 2026 · made with canvas</p>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mtitle">
+  <div class="modal-box">
+    <button class="modal-x" data-close aria-label="Закрыть">✕</button>
+    <p class="mono" style="color:var(--cyan)">заявка</p>
+    <h3 id="mtitle">Расскажите о проекте</h3>
+    <p class="sub">Ответим в течение рабочего дня и предложим решение.</p>
+    <form id="leadform">
+      <div class="field"><label for="f-name">Имя</label><input id="f-name" name="name" required placeholder="Как к вам обращаться"></div>
+      <div class="field"><label for="f-contact">Телефон или Telegram</label><input id="f-contact" name="contact" required placeholder="@username / +7 ..."></div>
+      <div class="field"><label for="f-msg">Задача</label><textarea id="f-msg" name="task" rows="3" placeholder="Например: лендинг для онлайн-курса"></textarea></div>
+      <button class="btn" type="submit">Отправить заявку</button>
+      <div class="form-status" role="status" aria-live="polite"></div>
+    </form>
+    <div class="sent">
+      <div class="sent-ring">✓</div>
+      <h3>Заявка отправлена</h3>
+      <p class="sub">Спасибо! Свяжемся с вами в ближайшее время.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(()=>{
+"use strict";
+/* ============ 3D particle geosphere + glowing icosa frame ============ */
+const cv=document.getElementById("scene"),ctx=cv.getContext("2d");
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let W=0,H=0,DPR=1,CX=0,CY=0,SC=1;
+function resize(){
+  DPR=Math.min(devicePixelRatio||1,2);
+  const r=cv.getBoundingClientRect();
+  W=cv.width=Math.round(r.width*DPR);H=cv.height=Math.round(r.height*DPR);
+  CX=W/2+(innerWidth>900?W*0.14:0);CY=H*0.46;
+  SC=Math.min(W,H)*0.335;
+}
+addEventListener("resize",resize);resize();
+
+/* icosahedron -> one subdivision = 42 verts / 120 edges geodesic */
+const PHI=(1+Math.sqrt(5))/2;
+const norm=v=>{const l=Math.hypot(v[0],v[1],v[2]);return[v[0]/l,v[1]/l,v[2]/l]};
+let V=[[-1,PHI,0],[1,PHI,0],[-1,-PHI,0],[1,-PHI,0],[0,-1,PHI],[0,1,PHI],
+       [0,-1,-PHI],[0,1,-PHI],[PHI,0,-1],[PHI,0,1],[-PHI,0,-1],[-PHI,0,1]].map(norm);
+let F=[[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],
+       [10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],
+       [2,4,11],[6,2,10],[8,6,7],[9,8,1]];
+const mc={};
+function mid(a,b){
+  const k=Math.min(a,b)+"_"+Math.max(a,b);
+  if(mc[k]!==undefined)return mc[k];
+  V.push(norm([(V[a][0]+V[b][0])/2,(V[a][1]+V[b][1])/2,(V[a][2]+V[b][2])/2]));
+  return mc[k]=V.length-1;
+}
+F=F.flatMap(([a,b,c])=>{
+  const ab=mid(a,b),bc=mid(b,c),ca=mid(c,a);
+  return[[a,ab,ca],[b,bc,ab],[c,ca,bc],[ab,bc,ca]];
+});
+const ES=new Set(),E=[];
+F.forEach(f=>{for(let i=0;i<3;i++){
+  const a=f[i],b=f[(i+1)%3],k=Math.min(a,b)+"_"+Math.max(a,b);
+  if(!ES.has(k)){ES.add(k);E.push([a,b]);}
+}});
+
+/* particle shell on fibonacci sphere */
+const PN=innerWidth<720?380:760,P=[];
+const GA=Math.PI*(3-Math.sqrt(5));
+for(let i=0;i<PN;i++){
+  const y=1-(i/(PN-1))*2,r=Math.sqrt(1-y*y),th=GA*i;
+  P.push({
+    x:Math.cos(th)*r,y,z:Math.sin(th)*r,
+    base:1.22+Math.random()*0.1,
+    k:0.5+Math.random(),
+    ph:Math.random()*Math.PI*2,
+    tw:0.5+Math.random()*0.7
+  });
+}
+
+/* state */
+let ry=0,rx=-0.28,tryy=0,trx=-0.28,vry=0.0024;
+let mx=0,my=0,pulse=0,t=0;
+const rings=[];
+const heroEl=document.querySelector(".hero");
+
+addEventListener("pointermove",e=>{
+  mx=e.clientX/innerWidth-0.5;my=e.clientY/innerHeight-0.5;
+});
+heroEl.addEventListener("pointerdown",e=>{
+  if(e.target.closest("a,button,input,textarea"))return;
+  pulse=Math.min(pulse+1,1.6);
+  rings.push({x:e.clientX*DPR,y:e.clientY*DPR,r:0,a:0.9});
+  for(const p of P)p.ph=Math.random()*Math.PI*2;
+});
+
+function rot(p,sx,cx2,sy,cy2){
+  let x=p[0]??p.x,y=p[1]??p.y,z=p[2]??p.z;
+  let x1=x*cy2+z*sy,z1=-x*sy+z*cy2;
+  let y1=y*cx2-z1*sx,z2=y*sx+z1*cx2;
+  return[x1,y1,z2];
+}
+function proj(x,y,z,s){
+  const d=3.2,f=d/(d-z*s);
+  return[CX+x*s*SC*f,CY+y*s*SC*f,f,z*s];
+}
+function col(z,a){
+  const m=(z+1)/2; /* back violet -> front cyan */
+  const r=Math.round(138+(84-138)*m),g=Math.round(123+(230-123)*m),b=Math.round(255);
+  return`rgba(${r},${g},${b},${a})`;
+}
+
+let last=0;
+function frame(ts){
+  requestAnimationFrame(frame);
+  const dt=Math.min((ts-last)/16.7,3);last=ts;
+  t+=0.01*dt;
+  ctx.clearRect(0,0,W,H);
+
+  tryy+=vry*dt*(RM?0.15:1);
+  trx=-0.28+(RM?0:my*0.55);
+  ry+= (tryy+(RM?0:mx*0.9)-ry)*0.045*dt;
+  rx+=(trx-rx)*0.045*dt;
+  pulse*=Math.pow(0.955,dt);
+
+  const sx=Math.sin(rx),cx2=Math.cos(rx),sy=Math.sin(ry),cy2=Math.cos(ry);
+  ctx.globalCompositeOperation="lighter";
+
+  /* ambient halo */
+  const halo=ctx.createRadialGradient(CX,CY,SC*0.1,CX,CY,SC*2.1);
+  halo.addColorStop(0,"rgba(110,130,255,0.055)");
+  halo.addColorStop(1,"rgba(110,130,255,0)");
+  ctx.fillStyle=halo;ctx.fillRect(0,0,W,H);
+
+  /* glowing icosa frame */
+  const vs=1+pulse*0.16,RP=[];
+  for(let i=0;i<V.length;i++){
+    const r3=rot(V[i],sx,cx2,sy,cy2);
+    RP.push(proj(r3[0],r3[1],r3[2],vs));
+  }
+  for(const[a,b]of E){
+    const A=RP[a],B=RP[b],z=(A[3]+B[3])/2,depth=(z+1)/2;
+    const al=0.04+depth*0.22+pulse*0.1;
+    ctx.strokeStyle=col(z,al*0.35);ctx.lineWidth=(2.6+depth*2.4)*DPR;
+    ctx.beginPath();ctx.moveTo(A[0],A[1]);ctx.lineTo(B[0],B[1]);ctx.stroke();
+    ctx.strokeStyle=col(z,al);ctx.lineWidth=(0.5+depth*0.8)*DPR;
+    ctx.beginPath();ctx.moveTo(A[0],A[1]);ctx.lineTo(B[0],B[1]);ctx.stroke();
+  }
+  /* frame nodes */
+  for(const q of RP){
+    const d=(q[3]+1)/2;
+    ctx.fillStyle=col(q[3],0.25+d*0.5);
+    ctx.beginPath();ctx.arc(q[0],q[1],(1+d*1.8+pulse*1.2)*DPR,0,7);ctx.fill();
+  }
+
+  /* particle shell (depth-sorted) */
+  const PR=[];
+  for(const p of P){
+    const r3=rot(p,sx,cx2,sy,cy2);
+    const breathe=1+Math.sin(t*1.4+p.ph)*0.015;
+    const s=p.base*breathe*(1+pulse*0.3*p.k);
+    PR.push([...proj(r3[0],r3[1],r3[2],s),p]);
+  }
+  PR.sort((a,b)=>a[3]-b[3]);
+  for(const q of PR){
+    const z=q[3],p=q[4],d=(z/p.base+1)/2;
+    const tw=0.55+0.45*Math.sin(t*2*p.tw+p.ph);
+    const al=(0.08+d*0.5)*tw+pulse*0.18;
+    const sz=(0.55+d*1.5+pulse*0.9*p.k)*DPR;
+    ctx.fillStyle=col(z/p.base,Math.min(al,0.95));
+    ctx.beginPath();ctx.arc(q[0],q[1],sz,0,7);ctx.fill();
+    if(d>0.82&&tw>0.85){ /* sparkle cross on nearest bright ones */
+      ctx.strokeStyle=col(z/p.base,al*0.5);ctx.lineWidth=DPR*0.6;
+      ctx.beginPath();ctx.moveTo(q[0]-sz*3,q[1]);ctx.lineTo(q[0]+sz*3,q[1]);
+      ctx.moveTo(q[0],q[1]-sz*3);ctx.lineTo(q[0],q[1]+sz*3);ctx.stroke();
+    }
+  }
+
+  /* click shockwaves */
+  for(let i=rings.length-1;i>=0;i--){
+    const g=rings[i];
+    g.r+=(14+g.r*0.06)*dt;g.a*=Math.pow(0.95,dt);
+    if(g.a<0.02){rings.splice(i,1);continue;}
+    ctx.strokeStyle=`rgba(84,230,255,${g.a*0.5})`;ctx.lineWidth=1.4*DPR;
+    ctx.beginPath();ctx.arc(g.x,g.y,g.r,0,7);ctx.stroke();
+    ctx.strokeStyle=`rgba(138,123,255,${g.a*0.3})`;ctx.lineWidth=5*DPR;
+    ctx.beginPath();ctx.arc(g.x,g.y,g.r*0.92,0,7);ctx.stroke();
+  }
+  ctx.globalCompositeOperation="source-over";
+}
+requestAnimationFrame(frame);
+
+/* ============ reveal on scroll ============ */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target);}
+}),{threshold:0.15});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+
+/* ============ card cursor glow ============ */
+document.querySelectorAll(".card").forEach(c=>{
+  c.addEventListener("pointermove",e=>{
+    const r=c.getBoundingClientRect();
+    c.style.setProperty("--mx",(e.clientX-r.left)+"px");
+    c.style.setProperty("--my",(e.clientY-r.top)+"px");
+  });
+});
+
+/* ============ modal ============ */
+const modal=document.getElementById("modal");
+const leadForm=document.getElementById("leadform");
+const submitButton=leadForm.querySelector('button[type="submit"]');
+const formStatus=leadForm.querySelector(".form-status");
+const taskField=document.getElementById("f-msg");
+let lastFocus=null;
+function openModal(plan){
+  lastFocus=document.activeElement;
+  formStatus.textContent="";
+  if(typeof plan==="string"&&plan)taskField.value=plan;
+  modal.classList.add("open");
+  document.body.style.overflow="hidden";
+  setTimeout(()=>document.getElementById("f-name").focus(),120);
+}
+function closeModal(){
+  modal.classList.remove("open","done");
+  document.body.style.overflow="";
+  leadForm.reset();
+  formStatus.textContent="";
+  submitButton.disabled=false;
+  submitButton.textContent="Отправить заявку";
+  lastFocus&&lastFocus.focus();
+}
+document.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>openModal(b.dataset.plan)));
+modal.querySelector("[data-close]").addEventListener("click",closeModal);
+modal.addEventListener("click",e=>{if(e.target===modal)closeModal();});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("open"))closeModal();});
+leadForm.addEventListener("submit",async e=>{
+  e.preventDefault();
+  submitButton.disabled=true;
+  submitButton.textContent="Отправка...";
+  formStatus.textContent="";
+  const formData=new FormData(leadForm);
+  const payload={
+    access_key:"YOUR_WEB3FORMS_ACCESS_KEY",
+    subject:"Новая заявка с сайта WebDesign Studio | Ad1sKa",
+    name:formData.get("name"),
+    contact:formData.get("contact"),
+    task:formData.get("task")
+  };
+  try{
+    const response=await fetch("https://web3forms.com/",{
+      method:"POST",
+      headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify(payload)
+    });
+    const result=await response.json();
+    if(!response.ok||!result.success)throw new Error(result.message||"Не удалось отправить заявку.");
+    leadForm.reset();
+    modal.classList.add("done");
+    setTimeout(closeModal,2600);
+  }catch(error){
+    formStatus.textContent="Не удалось отправить заявку. Попробуйте ещё раз или напишите в Telegram.";
+    submitButton.disabled=false;
+    submitButton.textContent="Отправить заявку";
+  }
+});
+})();
+</script>
+</body>
+</html>
